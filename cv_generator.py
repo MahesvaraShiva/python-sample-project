@@ -1,8 +1,12 @@
+import os
 from docx import Document
 from docx.shared import Inches
 from PIL import Image, ImageDraw
 import pyttsx3
 
+# paste the path where you installed the files
+project_path = r"C:\Users\USer\OneDrive\Documents\Python\CV_Generator"
+os.chdir(project_path)
 def speak(text):
     pyttsx3.speak(text)
  
