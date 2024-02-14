@@ -1,5 +1,5 @@
 # python sample project
-after downloading the files, you can replace the profile picture with yours by renaming your picture "SamplePic" thus replacing the stock "SamplePic.jpg" (replace the file extension on the code if you have a different file type on your pic)
+after downloading the files, you can import your picture on the same file path of the py file.
 
 ## installation
 `python install -r requirements.txt`
