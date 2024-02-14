@@ -2,18 +2,29 @@ import os
 from docx import Document
 from docx.shared import Inches
 from PIL import Image, ImageDraw
-import pyttsx3
+import PIL.Image
 
 # paste the path where you installed the files
 project_path = r"C:\Users\USer\OneDrive\Documents\Python\CV_Generator"
 os.chdir(project_path)
-def speak(text):
-    pyttsx3.speak(text)
  
 document = Document()
 
-# Open the image
-img = Image.open('SamplePic.png')
+def picture():
+    path = input("Enter a valid pathname to an image:\n")
+    try:
+        image = PIL.Image.open(path)
+        return image  # Return the image object
+    except Exception as e:
+        print(f"Error: {e}")
+        return None  # Return None if there's an error
+
+# Call the picture() function to get the image object
+img = picture()
+
+# If img is None (e.g., if there was an error), exit the program
+if img is None:
+    exit()
 
 # Create a mask (circular)
 mask = Image.new('L', img.size, 0)
@@ -33,9 +44,7 @@ picture = document.add_picture(
     )
 
 # name phone number and email details
-speak('what is your full name?')
 name = input('What is your full name? ')
-
 phone_number = input('What is your phone number? ')
 email = input('What is your email address? ')
 document.add_paragraph(name + ' | ' + phone_number + ' | ' + email)
